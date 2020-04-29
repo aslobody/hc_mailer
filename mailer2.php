@@ -49,17 +49,16 @@
   </div>
  * ********************************************************************************************************************* */
 header('Content-Type: text/html; charset=UTF-8');
-
 mb_internal_encoding('UTF-8');
-
 define("REPLY_EN", "This is an auto-generated e-mail; please do not reply. Your message has been received by the Web site administrator and is being forwarded to a subject-matter expert for consideration. You may be contacted if further information is needed.  Thank you.");
 define("REPLY_FR", "Ce courriel est envoyé par un processus automatisé; veuillez ne pas répondre à ce courriel. Votre message a été reçu par l'administrateur du site Web et sera transmis à un expert en la matière pour évaluation. Vous pourriez être contacté si des informations supplémentaires sont requises. Merci.");
 
 class mailer {
 
-    //public $success; // true or false mail sent
-    private $refererEmail = array('canada.ca', 'hc-sc.gc.ca', 'list.hc-sc.gc.ca', 'chemicalsubstanceschimiques.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', 'phac-aspc.gc.ca'); // list of email domain names
-    private $refererSite = array('web.hc-sc.gc.ca', 'www.hc-sc.gc.ca', '205.193.190.11', 'dev.healthycanadians.gc.ca', 'dev.canadiensensante.gc.ca', 'www.healthycanadians.gc.ca', 'www.canadiensensante.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', '205.193.190.5', '205.193.190.7', 'health.canada.ca', 'sante.canada.ca'); // list of site domain namesnames
+    // list of email domain names
+    private $refererEmail = array('canada.ca', 'hc-sc.gc.ca', 'list.hc-sc.gc.ca', 'chemicalsubstanceschimiques.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', 'phac-aspc.gc.ca');
+    // list of site domain namesnames
+    private $refererSite = array('web.hc-sc.gc.ca', 'www.hc-sc.gc.ca', '205.193.190.11', 'dev.healthycanadians.gc.ca', 'dev.canadiensensante.gc.ca', 'www.healthycanadians.gc.ca', 'www.canadiensensante.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', '205.193.190.5', '205.193.190.7', 'health.canada.ca', 'sante.canada.ca');
     private $recipientEmail;
     private $replyToEmail;
     private $subject;
@@ -69,7 +68,6 @@ class mailer {
         $serverName = $_SERVER['SERVER_NAME'];
         foreach ($this->refererSite as $val) {
             if ($serverName == $val)
-            //if (strpos($serverName, $val) !== false)
                 return true;
         }
     }
