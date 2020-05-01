@@ -1,0 +1,164 @@
+<?php
+include("" . "class/template.inc");
+$page = new Template();
+
+/* START: META INFO ********************************************************************************
+*                                                                                                  *
+* PURPOSE:         Sets basic meta data and other features in the Head section of the web page     *
+*                                                                                                  *
+* setTitle         String: Meta/Social Media title                                                 *
+* setShortTitle    String: Short version of page title used in navigation if different than title  *
+* setDesc          String: Meta/Social Media description                                           *
+* setDateCreated   String: YYYY-MM-DD - Date page was created for meta data                        *
+* setDateModified  String: YYYY-MM-DD - Date page was modified for meta and pg bottom              *
+*                                                                                                  *
+* setDateReviewed  String: YYYY-MM-DD - Date page needs to be reviewed                             *
+* setDateMeta      String: YYYY-MM-DD - Date page was reviewed by meta data librarian              *
+* setDcCreator     String: Meta dc.creator field, if need more than one then call it again         *
+* setDcContributor String: Meta dc.contributor field, if need more than one then call it again     *
+* setDcType        String: Meta dc.type field, if need more than one then call it again            *
+* setDcAudience    String: Meta dc.audience field, if need more than one then call it again        *
+* showNoRobots     Empty:  Uncomment to include no robots meta tag                                 *
+* showFontAwesome  Empty:  Uncomment to include the line of code needed to use Font Awesome pack.  *
+*                                                                                                  *
+* END: META INFO **********************************************************************************/
+
+$page->setTitle("Test Form");
+//$page->setShortTitle("");
+$page->setDesc("Description");
+$page->setDateCreated("2018-09-10");
+$page->setDateModified("2018-09-10");
+$page->setDateReviewed("");
+$page->setDateMeta("");
+$page->setDcSubjects("");
+//$page->setDcCreator("");
+$page->setDcContributor("");
+$page->setDcType("");
+$page->setDcAudience("");
+//$page->showNoRobots();
+//$page->showFontAwesome();
+
+/* START: LINKS ************************************************************************************
+*                                                                                                  *
+* PURPOSE:              Link to alternate language(s), redirect, and contact us page               *
+*                                                                                                  *
+* setLangUrl            String: Absolute path of french page url, must start with a slash.         *
+* setContactPage        String: Absolulte path that overrides contact us link.                     *
+* setRedir              String: Web page URL starting with http:// that this page redirects to     *
+* setMultiLangUrl       String: Experimental                                                       *
+*                                                                                                  *
+* END: LINKS **************************************************************************************/
+
+$page->setLangUrl("/fr/sante-canada/services/drogues-medicaments/cannabis/rappels-effets-indesirables-declaration/formulaire-declaration.html");
+//$page->setContactPage("");
+//$page->setRedir("http://");
+//$page->setMultiLangUrl("");
+
+/* START: PAGE SETUP *******************************************************************************
+*                                                                                                  *
+* PURPOSE:              Initializes web page by determining what components to show/hide.          *
+*                                                                                                  *
+* showFluidLayout       Empty:  Uncomment to make the main container of page be fluid width.       *
+* hideLeftMenu          Empty:  Set to false and it removes the left menu for a wide template      *
+* hideSearch            Empty:  Set to true if you want to hide the Search box feature             *
+* hideMegaMenu          Empty:  Set to true if you want to hide the Mega Menu                      *
+* hideBreadcrumb        Empty:  Set to true if you want to hide the breadcrumb path                *
+* hideReportProblem     Empty:  Set to true if you want to hide the report a problem link          *
+* hideSharePage         Empty:  Set to true if you want to hide the Share this page link           *
+* hideGCFeatures        Empty:  Set to true if you want to hide the GC Features                    *
+* hideGCTasks           Empty:  Set to true if you want to hide the GC Task links in the footer    *
+* hideGCWordMark        Empty:  Set to true if you want to hide the GC Links and Watermark         *
+* //futureUse			Comment: Keep comment here in case a new feature needs to be added later   *
+*                                                                                                  *
+* END: PAGE SETUP *********************************************************************************/
+
+//$page->showFluidLayout();
+//$page->hideLeftMenu();
+//$page->hideSearch();
+//$page->hideMegaMenu();
+//$page->hideBreadcrumb();
+//$page->hideReportProb();
+//$page->hideSharePage();
+//$page->hideGCFeatures();
+//$page->hideGCTasks();
+//$page->hideGCWordMark();
+//futureUse
+
+/* START: PRE-CONTENT ******************************************************************************
+*                                                                                                  *
+* PURPOSE:         Section below is for additional HTML code that will be displayed before <main>  *
+*                                                                                                  *
+* END: PRE-CONTENT ********************************************************************************/
+
+/*$preContent = <<<ENDPRECONTENT
+<!-- Start-Pre-Content -->
+<!-- End-Pre-Content -->
+ENDPRECONTENT;
+$page->setPreContent($preContent);*/
+
+/* START: CODE *************************************************************************************
+*                                                                                                  *
+* PURPOSE:         Section below is for additional server code that may need to go on pages.       *
+*                                                                                                  *
+* END: CODE ***************************************************************************************/
+
+// futureUse
+?>
+<?php include($page->getVersion() . "header-en.inc"); ?>
+<!-- CUSTOM SCRIPTS/CSS START | DEBUT DES SCRIPTS/CSS PERSONNALISES -->
+<?php require_once('mailer3.php'); ?>
+<!-- CUSTOM SCRIPTS/CSS END | FIN DES SCRIPTS/CSS PERSONNALISES -->
+<?php include($page->getVersion() . "middle-en.inc"); ?>
+
+<h1 property="name" id="wb-cont">Test Form</h1>
+
+<div class="wb-frmvld">
+<form method="post" action="" accept-charset="UTF-8">
+<div class="form-group">
+<label for="realname"><span class="field-name">Name :</span></label>
+<input name="realname" id="realname" size="30" class="form-control" />
+</div>
+<div class="form-group">
+<label for="email" class="required"><span class="field-name">Email :</span> <strong class="required">(required)</strong></label>
+<input type="email" name="email" id="email" size="30" class="form-control" required />
+</div>
+<div class="form-group">
+<label for="comments" class="required"><span class="field-name">Message:</span> <strong class="required">(required)</strong></label>
+<textarea cols="45" name="comments" id="comments" rows="10" required class="form-control"></textarea>
+</div>
+<div>
+<!-- ************************ REQUIRED FIELDS ************************** -->
+<input type="hidden" name="recipient" value="RECIPIENT EMAIL" />
+
+<!-- if multiple recipients use these fields or type="checkbox"-->
+<input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 1" />
+<input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 2" />
+<!-- ******************************************************************* -->
+<!-- ******************************************************************* -->
+<input type="hidden" name="redirect" value="REDIRECT URL" />
+<input type="hidden" name="subject" value="MAIL SUBJECT" />
+<input type="hidden" name="required" value="field name 1|field label 1;field name 2|field label 2" />
+<input type="hidden" name="fields" value="field name 1|field label 1;field name 2|field label 2;field name 3|field label 3" />
+<!-- ******************************************************************* -->
+<!-- *************** custom reply messages if required ***************** -->
+<input type="hidden" name="replyMessageEn" value="ENGLISH AUTOREPLY MESSAGE" />
+<input type="hidden" name="replyMessageFr" value="FRENCH AUTOREPLY MESSAGE" />
+<!-- ******************************************************************* -->
+<!-- ****** set value to false if no autoreply message required ******** -->
+<input type="hidden" name="autoReplySend" value="false"/>
+<!-- ******************************************************************* -->
+<!-- ********* set value to text if no HTML email format required ****** -->
+<input type="hidden" name="emailFormatTo" value="text"/>
+<input type="hidden" name="emailFormatReplyTo" value="text"/>
+<!-- ******************************************************************* -->
+<!-- ******************************************************************* -->
+<input type="submit" value="Submit" name="submit" class="btn btn-primary" />
+<!-- ******************************************************************* -->
+</div>
+</form>
+</div>
+<?php include($page->getVersion() . "footer-en.inc"); ?>
+<!-- CUSTOM SCRIPTS START | DEBUT DES SCRIPTS PERSONNALISES -->
+
+<!-- CUSTOM SCRIPTS END   | FIN DES SCRIPTS PERSONNALISES -->
+</body></html>

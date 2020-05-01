@@ -49,24 +49,23 @@
   </div>
  * ********************************************************************************************************************* */
 header('Content-Type: text/html; charset=UTF-8');
-//error_reporting(-1);
 mb_internal_encoding('UTF-8');
-//mb_http_output('UTF-8');
-//mb_http_input('UTF-8');
-//mb_regex_encoding('UTF-8');
+
 // set the autoreply messages
 define("REPLY_EN", "This is an auto-generated e-mail; please do not reply. Your message has been received by the Web site administrator and is being forwarded to a subject-matter expert for consideration. You may be contacted if further information is needed.  Thank you.");
 define("REPLY_FR", "Ce courriel est envoyé par un processus automatisé; veuillez ne pas répondre à ce courriel. Votre message a été reçu par l'administrateur du site Web et sera transmis à un expert en la matière pour évaluation. Vous pourriez être contacté si des informations supplémentaires sont requises. Merci.");
 
 class mailer {
 
-    //public $success; // true or false mail sent
-    private $refererEmail = array('canada.ca', 'hc-sc.gc.ca', 'list.hc-sc.gc.ca', 'chemicalsubstanceschimiques.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', 'phac-aspc.gc.ca'); // list of email domain names
-    private $refererSite = array('web.hc-sc.gc.ca', 'www.hc-sc.gc.ca', '205.193.190.11', 'dev.healthycanadians.gc.ca', 'dev.canadiensensante.gc.ca', 'www.healthycanadians.gc.ca', 'www.canadiensensante.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', '205.193.190.5', '205.193.190.7', 'health.canada.ca', 'sante.canada.ca'); // list of site domain namesnames    
+    // list of email domain names
+    private $refererEmail = array('canada.ca', 'hc-sc.gc.ca', 'list.hc-sc.gc.ca', 'chemicalsubstanceschimiques.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', 'phac-aspc.gc.ca');
+    // list of site domain namesnames
+    private $refererSite = array('web.hc-sc.gc.ca', 'www.hc-sc.gc.ca', '205.193.190.11', 'dev.healthycanadians.gc.ca', 'dev.canadiensensante.gc.ca', 'www.healthycanadians.gc.ca', 'www.canadiensensante.gc.ca', 'healthycanadians.gc.ca', 'canadiensensante.gc.ca', '205.193.190.5', '205.193.190.7', 'health.canada.ca', 'sante.canada.ca');
     private $recipientEmail;
     private $replyToEmail;
     private $subject;
-    private $noReplyDefault = 'no-reply-pas-repondre@hc-sc.gc.ca'; // default email address for headers FROM, Reply-To
+    // default email address for headers FROM, Reply-To
+    private $noReplyDefault = 'no-reply-pas-repondre@hc-sc.gc.ca';
 
     private function refererDomain() {
         $serverName = $_SERVER['SERVER_NAME'];
@@ -316,7 +315,7 @@ class mailer {
                     $mail_message = $this->buildMessageText();
                     $headers = $this->mailHeadersText($this->noReplyDefault, $this->replyToEmail);
                 } else {
-                    // email in HTML format    
+                    // email in HTML format
                     $mail_message = '<html><body style="font-family:Arial, Helvetica, sans-serif;font-size:12px;">';
                     $mail_message .= $this->buildMessageHTML();
                     $mail_message .= '</body></html>';
@@ -378,4 +377,3 @@ if (isset($_POST['submit'])) {
         print 'Some required fields are missing';
     }
 }
-
