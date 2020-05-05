@@ -384,6 +384,35 @@ class mailer {
         }
     }
 
+    // get anti-spam validation field
+     private function getValidation() {
+         $validation = $_POST['validation'];
+         if (isset($validation) && $validation !== '') {
+             return $validation;
+         }
+     }
+     // get ani-spam redirect field
+     public function getRedirectValidation() {
+         $redirectValidation = trim($_POST['redirectValidation']);
+         if (isset($redirectValidation) && $redirectValidation !== '') {
+             return $redirectValidation;
+         }
+     }
+     // validate anti-spam validation fields
+     public function validateValidationFields() {
+         $validationFields = explode(";", $this->getValidation());
+         foreach ($validationFields as $value) {
+           $value = trim($value);
+             if (!isset($_POST[$value])) {
+                 return FALSE;
+             }
+             if (is_string($_POST[$value]) && trim($_POST[$value]) == '') {
+                 return FALSE;
+             }
+         }
+         return TRUE;
+     }
+
 }
 
 if (isset($_POST['submit'])) {

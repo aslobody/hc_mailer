@@ -164,7 +164,7 @@ $page->setPreContent($preContent);*/
         <input class="form-control" type="text" id="userDescription" name="userDescription" maxlength="200" value="" placeholder="Description" required />
       </div>
       <!-- *************** add ant-spam validation field names ****************-->
-      <input type="hidden" name="validation" value="field1; field2">
+      <input type="hidden" name="validation" value="field1;field2">
       <!-- ******* redirect URL for anti-spam fields ************************* -->
       <input type="hidden" name="redirectValidation" value="REDIRECT URL VALIDATION" />
       <!-- ********************** basic captcha ****************************** -->
@@ -177,6 +177,6 @@ $page->setPreContent($preContent);*/
 </div>
 <?php include($page->getVersion() . "footer-en.inc"); ?>
 <!-- CUSTOM SCRIPTS START | DEBUT DES SCRIPTS PERSONNALISES -->
-
+<script src="captcha.js"></script>
 <!-- CUSTOM SCRIPTS END   | FIN DES SCRIPTS PERSONNALISES -->
 </body></html>
