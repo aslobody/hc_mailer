@@ -391,11 +391,20 @@ class mailer {
              return $validation;
          }
      }
-     // get ani-spam redirect field
+     // get anti-spam redirect field
      public function getRedirectValidation() {
          $redirectValidation = trim($_POST['redirectValidation']);
          if (isset($redirectValidation) && $redirectValidation !== '') {
              return $redirectValidation;
+         }
+     }
+     // get anti-spam captchaValidation field
+     private function getCaptchaValidation() {
+         $captchaValidation = $_POST['captchaValidation'];
+         if (isset($captchaValidation) && $captchaValidation !== '') {
+             return $captchaValidation;
+         } else {
+           return FALSE;
          }
      }
      // validate anti-spam validation fields
@@ -412,15 +421,31 @@ class mailer {
          }
          return TRUE;
      }
-     
+     // validate date captchaValidation
+     public function validateCaptchaValidation() {
+       date_default_timezone_set('America/Toronto');
+       $captchaValidation = $this->getCaptchaValidation();
+       $today = date("Y-m-d");
+       if ($captchaValidation !== FALSE) {
+         if ($today === $captchaValidation) {
+           return TRUE;
+         }
+       }
+       return FALSE;
+     }
 
 }
 
 if (isset($_POST['submit'])) {
     $myMailer = new mailer;
     if ($myMailer->validateRequired()) {
+      // anti-spam validation
+      if (!$myMailer->validateCaptchaValidation() && $myMailer->validateValidationFields()) {
+        header('Location: ' . $myMailer->getRedirectValidation());
+      } else {
         $myMailer->sendMail();
         header('Location: ' . $myMailer->getRedirect());
+      }        
     } else {
         print 'Some required fields are missing';
     }
