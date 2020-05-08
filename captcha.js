@@ -5,11 +5,14 @@ $(function() {
     '</div>';
   $("#captcha").append(text);
   // validate today's date
-  $j('#captchaValidation').on("blur", function() {
-    var str = $j(this).val();
+  $("#captchaValidation").on("blur", function() {
+    var str = $(this).val();
     var today = new Date().toISOString().slice(0, 10);
+    //alert(str);
     if (str !== today) {
       $("#captchaError").append('<strong class="error"><span class="label label-danger"><span class="prefix">Error: </span>Please enter today\'s date</span></strong>');
+    } else {
+      $("#captchaError strong.error").remove();
     }
   });
 });
