@@ -413,13 +413,13 @@ class mailer {
          foreach ($validationFields as $value) {
            $value = trim($value);
              if (!isset($_POST[$value])) {
-                 return FALSE;
+                 return TRUE;
              }
              if (is_string($_POST[$value]) && trim($_POST[$value]) == '') {
-                 return FALSE;
+                 return TRUE;
              }
          }
-         return TRUE;
+         return FALSE;
      }
      // validate date captchaValidation
      public function validateCaptchaValidation() {
@@ -440,12 +440,12 @@ if (isset($_POST['submit'])) {
     $myMailer = new mailer;
     if ($myMailer->validateRequired()) {
       // anti-spam validation
-      if (!$myMailer->validateCaptchaValidation() && $myMailer->validateValidationFields()) {
+      if (!$myMailer->validateCaptchaValidation() || !$myMailer->validateValidationFields()) {
         header('Location: ' . $myMailer->getRedirectValidation());
       } else {
         $myMailer->sendMail();
         header('Location: ' . $myMailer->getRedirect());
-      }        
+      }
     } else {
         print 'Some required fields are missing';
     }

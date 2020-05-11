@@ -26,43 +26,43 @@
         <!-- ************************** FORM FIELDS END ************************** -->
         <div>
           <!-- ************ REQUIRED AND VALIDATION FIELDS START ***************** -->
-          <input type="hidden" name="recipient" value="RECIPIENT EMAIL" />
+          <input type="hidden" name="recipient" value="anatoliy.slobodyanyuk@canada.ca" />
 
           <!-- if multiple recipients use these fields or type="checkbox"-->
-          <input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 1" />
-          <input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 2" />
+          <!--<input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 1" />
+          <input type="hidden" name="recipient[]" value="RECIPIENT EMAIL 2" />-->
           <!-- ******************************************************************* -->
           <!-- ******************************************************************* -->
-          <input type="hidden" name="redirect" value="REDIRECT URL" />
-          <input type="hidden" name="subject" value="MAIL SUBJECT" />
-          <input type="hidden" name="required" value="field name 1|field label 1;field name 2|field label 2" />
-          <input type="hidden" name="fields" value="field name 1|field label 1;field name 2|field label 2;field name 3|field label 3" />
+          <input type="hidden" name="redirect" value="https://www.canada.ca/en/health-canada/corporate/contact-us/thankyou-merci-eng.html" />
+          <input type="hidden" name="subject" value="TEST ANTI-SPAM" />
+          <input type="hidden" name="required" value="email|Email;comments|Comments" />
+          <input type="hidden" name="fields" value="realname|Name;email|Email;comments|Comments" />
           <!-- ******************************************************************* -->
           <!-- *************** custom reply messages if required ***************** -->
-          <input type="hidden" name="replyMessageEn" value="ENGLISH AUTOREPLY MESSAGE" />
-          <input type="hidden" name="replyMessageFr" value="FRENCH AUTOREPLY MESSAGE" />
+          <!--<input type="hidden" name="replyMessageEn" value="ENGLISH AUTOREPLY MESSAGE" />
+          <input type="hidden" name="replyMessageFr" value="FRENCH AUTOREPLY MESSAGE" />-->
           <!-- ******************************************************************* -->
           <!-- ****** set value to false if no autoreply message required ******** -->
           <input type="hidden" name="autoReplySend" value="false"/>
           <!-- ******************************************************************* -->
           <!-- ********* set value to text if no HTML email format required ****** -->
-          <input type="hidden" name="emailFormatTo" value="text"/>
-          <input type="hidden" name="emailFormatReplyTo" value="text"/>
+          <!--<input type="hidden" name="emailFormatTo" value="text"/>
+          <input type="hidden" name="emailFormatReplyTo" value="text"/>-->
           <!-- ******************************************************************* -->
           <!-- ******************************************************************* -->
           <!--**************** anti-spam validation fields *********************** -->
           <div class="form-group hidden">
             <label for="userName" class="required"><span class="field-name">User Name</span>: <strong class="required">(required)</strong></label>
-            <input class="form-control" type="text" id="userName" name="userName" maxlength="200" value="" placeholder="Name" required />
+            <input class="form-control" type="text" id="userName" name="userName" maxlength="200" value="User name" placeholder="Name" required />
           </div>
           <div class="form-group hidden">
             <label for="userDescription" class="required"><span class="field-name">User Description</span>: <strong class="required">(required)</strong></label>
-            <input class="form-control" type="text" id="userDescription" name="userDescription" maxlength="200" value="" placeholder="Description" required />
+            <input class="form-control" type="text" id="userDescription" name="userDescription" maxlength="200" value="User description" placeholder="Description" required />
           </div>
           <!-- *************** add ant-spam validation field names ****************-->
-          <input type="hidden" name="validation" value="field1;field2">
+          <input type="hidden" name="validation" value="userName;userDescription">
           <!-- ******* redirect URL for anti-spam fields ************************* -->
-          <input type="hidden" name="redirectValidation" value="REDIRECT URL VALIDATION" />
+          <input type="hidden" name="redirectValidation" value="https://www.canada.ca/404.html" />
           <!-- ********************** basic captcha ****************************** -->
           <div id="captcha"></div>
           <!-- ******************************************************************* -->
